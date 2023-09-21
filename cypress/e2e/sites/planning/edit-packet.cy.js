@@ -1,6 +1,6 @@
-import {siteInformationPage} from "../../../../dryad-qa-ui/dryad-cypress-tests/cypress/pages/siteInformationPage";
-import {planningPage} from "../../../../dryad-qa-ui/dryad-cypress-tests/cypress/pages/planningPage";
-import {createPacketsPage} from "../../../../dryad-qa-ui/dryad-cypress-tests/cypress/pages/createPacketsPage";
+import {siteInformationPage} from "../../../pages/siteInformationPage";
+import {planningPage} from "../../../pages/planningPage";
+import {createPacketsPage} from "../../../pages/createPacketsPage";
 
 describe('Verify editing packets', () => {
   const siteName = "Berlin Demonstration";
@@ -14,6 +14,7 @@ describe('Verify editing packets', () => {
   before(() => {
     cy.viewport(1920, 1080);
     cy.loginViaUi('ravinda@dryad.net','nawodi89');
+
     siteInformationPage.visitSiteInformationPage(siteName);
     siteInformationPage.clickPlanningBtn();
     planningPage.clickAddPacketBtn();
