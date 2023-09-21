@@ -85,6 +85,6 @@ describe('Verify site information page', () => {
             .find('span')
             .should('not.contain', 'No data available');
         });
-    };
+    }
   });
 });
