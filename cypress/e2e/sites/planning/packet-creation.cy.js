@@ -20,18 +20,19 @@ describe('Verify creating packets', () => {
   })
 
   it("Planning button should be visible in site page", () => {
+    cy.visit('/dashboard')
     siteInformationPage.visitSiteInformationPage(siteName);
 
     cy.wait(500)
 
     // cy.scrollTo('top');
-    cy.get('[label=Planning]').should('be.visible');
+    cy.get('[data-cy="start-planing"]').should('be.visible');
 
     siteInformationPage.clickPlanningBtn();
     cy.url().should('include', '/packets');
 
   //it("Add packet button should be available in packets page", () => {
-    cy.get('[label="Add Packet"]').should('be.visible');
+    cy.get('[data-cy="add-packet"]').should('be.visible');
   //});
 
   //it("Create packet page should be open when add packet button is clicked", () => {
@@ -43,7 +44,7 @@ describe('Verify creating packets', () => {
     createPacketsPage.enterPacketName(packetName);
   //});
 
-    cy.wait(1500);
+    cy.wait(500);
 
   //it("It should be possible to add Sensors to the packet", () => {
     createPacketsPage.addSensors(noOfSensors)
@@ -76,9 +77,9 @@ describe('Verify creating packets', () => {
   //});
 
   //it("Latitude and Longitude of only the devices placed on map should get updated on the list", () => {
-  //   verifyLatLong(sensorNode1, true);
-  //   verifyLatLong(sensorNode2, true);
-  //   verifyLatLong(borderGateway1, false);
+    verifyLatLong(sensorNode1, true);
+    verifyLatLong(sensorNode2, true);
+    verifyLatLong(borderGateway1, false);
   //});
 
   //it("User should be able to place all the devices on map at once", () => {
@@ -89,9 +90,9 @@ describe('Verify creating packets', () => {
   //});
 
   //it("Latitude and Longitude of all the devices should get updated on the list", () => {
-  //   verifyLatLong(sensorNode1, true);
-  //   verifyLatLong(sensorNode2, true);
-  //   verifyLatLong(borderGateway1, true);
+    verifyLatLong(sensorNode1, true);
+    verifyLatLong(sensorNode2, true);
+    verifyLatLong(borderGateway1, true);
   //});
 
   //it("User should be able to save the packet", () => {
@@ -106,21 +107,7 @@ describe('Verify creating packets', () => {
     createPacketsPage.clickBackBtn();
 
     cy.get('[class="p-element"]').contains(packetName).should('be.visible');
-  //});
 
-  //it("Assigning a user for the packet should be possible", () => {
-    cy.contains('span[class="flex-label"]', packetName).parentsUntil('[ng-reflect-ng-class="[object Object]"]').within(() => {
-      cy.get('i[class="ph ph-2x ph-user-circle-plus clickable"]').click();
-    });
-
-    cy.wait(500);
-
-    cy.get('td').contains('Tester').parent()
-      .within($tr => {
-          cy.get('p-tableradiobutton').click();
-    });
-
-    cy.get('[label="Assign"]').click();
   //});
 
   //it("Information of the packet should be displayed on the right side", () => {
@@ -135,7 +122,6 @@ describe('Verify creating packets', () => {
   //});
 
   //it("User should be able to delete the created packet", () => {
-    planningPage.selectPacket(packetName);
     planningPage.clickDeletePacketIcon();
     planningPage.clickConfirmDeleteBtn();
     cy.get('[class="p-element"]').should('not.have.text', packetName);

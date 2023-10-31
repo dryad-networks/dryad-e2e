@@ -1,19 +1,19 @@
 export class createPacketsPage {
 
   static elements = {
-    addDevicesBtn: () => cy.get('dryad-button[label="Add devices to packet"]'),
-    packetNameTxt: () => cy.get('[name=packetName]'),
-    noOfDevicesTxt: () => cy.get('[id=integeronly]'),
-    addBtn: () => cy.get('dryad-button[label=Add]'),
-    addDevicesDdl: () => cy.get('p-dropdown'),
-    ddlItemSensor: () => cy.get('[aria-label="Sensor"]'),
-    ddlItemBg: () => cy.get('[aria-label="Border Gateway "]'),
-    ddlItemMg: () => cy.get('[aria-label="Mesh Gateway "]'),
-    submitBtn: () => cy.get('[data-cy="btn-submit"]'),
-    backBtn: () => cy.get('[label="Back"]'),
+    addDevicesBtn: () => cy.get('[data-cy="add-devices"]'),
+    packetNameTxt: () => cy.get('[data-cy="packetName"]'),
+    chooseDevicesDdl: () => cy.get('[data-cy="choose-device"]'),
+    noOfDevicesTxt: () => cy.get('[data-cy="amount"]'),
+    addBtn: () => cy.get('[data-cy="button"]'),
+    ddlItemSensor: () => cy.get('[data-cy="Sensor"]'),
+    ddlItemBg: () => cy.get('[data-cy="bg"]'),
+    ddlItemMg: () => cy.get('[data-cy="mg"]'),
     checkBox: () => cy.get('div[role="checkbox"]'),
-    placeOnMapBtn: () => cy.get('button[label="Place on map"]'),
-    removeDeviceBtn: () => cy.get('button[label="Remove"]')
+    placeOnMapBtn: () => cy.get('[data-cy="place-on-map"]'),
+    removeDeviceBtn: () => cy.get('[data-cy="remove"]'),
+    saveBtn: () => cy.get('[data-cy="save"]'),
+    backBtn: () => cy.get('[data-cy="back"]')
   }
 
   static clickAddDevicesBtn(){
@@ -31,7 +31,7 @@ export class createPacketsPage {
   static addSensors(noOfDevices) {
     createPacketsPage.clickAddDevicesBtn();
 
-    this.elements.addDevicesDdl().click();
+    this.elements.chooseDevicesDdl().click();
     this.elements.ddlItemSensor().click();
 
     this.elements.noOfDevicesTxt().type(noOfDevices);
@@ -41,7 +41,7 @@ export class createPacketsPage {
   static addBoarderGateways(noOfDevices) {
     createPacketsPage.clickAddDevicesBtn();
 
-    this.elements.addDevicesDdl().click();
+    this.elements.chooseDevicesDdl().click();
     this.elements.ddlItemBg().click();
 
     this.elements.noOfDevicesTxt().type(noOfDevices);
@@ -51,7 +51,7 @@ export class createPacketsPage {
   static addMeshGateways(noOfDevices) {
     createPacketsPage.clickAddDevicesBtn();
 
-    this.elements.addDevicesDdl().click();
+    this.elements.chooseDevicesDdl().click();
     this.elements.ddlItemMg().click();
 
     this.elements.noOfDevicesTxt().type(noOfDevices);
@@ -59,7 +59,7 @@ export class createPacketsPage {
   }
 
   static clickSubmitBtn(){
-    this.elements.submitBtn().click();
+    this.elements.saveBtn().click();
   }
 
   static clickBackBtn(){

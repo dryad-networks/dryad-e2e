@@ -46,7 +46,7 @@ Cypress.Commands.add('loginViaUi', (email, password) => {
         //cy.wait(500);
 
         cy.location('pathname')
-            .should('eq', '/sites');
+            .should('eq', '/dashboard');
 
         },
         {

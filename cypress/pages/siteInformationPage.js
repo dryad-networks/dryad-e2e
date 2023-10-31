@@ -1,7 +1,7 @@
 export class siteInformationPage{
 
   static elements = {
-    planningBtn: () => cy.get('[label=Planning]')
+    planningBtn: () => cy.get('[data-cy="start-planing"]')
   }
 
   static visitSiteInformationPage(siteName) {

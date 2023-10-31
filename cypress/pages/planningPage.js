@@ -6,7 +6,7 @@ export class planningPage {
     rightCardPanel: () => cy.get('p-card[class="p-element ng-star-inserted"]'),
     editIcon: () => cy.get('span[class="p-button-icon ph ph-2x ph-pencil-simple"]'),
     deleteIcon: () => cy.get('button[class="p-element p-ripple p-button p-button-rounded p-button-text p-button-danger p-component p-button-icon-only"]'),
-    confirmDeleteBtn: () => cy.get('button[ng-reflect-label="Confirm"]')
+    confirmDeleteBtn: () => cy.get('button[type="button"]')
   }
 
   static clickAddPacketBtn() {
@@ -26,7 +26,7 @@ export class planningPage {
   }
 
   static clickConfirmDeleteBtn() {
-    this.elements.confirmDeleteBtn().click();
+    this.elements.confirmDeleteBtn().contains("Confirm").click();
   }
 
   static selectPacket(packetName) {
